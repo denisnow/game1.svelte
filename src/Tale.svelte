@@ -1,13 +1,11 @@
 <script>
     import { afterUpdate } from 'svelte';
 
-    export let number, index;
+    export let number, position;
 
     let tile;
-    $: i = Math.floor(index/4);
-    $: j = index-(i*4);
 
-    afterUpdate( () => tile.style.transform = "translate(" + j*100 + "%, " + i*100 + "%)" );
+    afterUpdate( () => tile.style.transform = "translate(" + position.n*100 + "%, " + position.m*100 + "%)" );
 </script>
 
 <div class='tileWrapper' bind:this={tile}>
