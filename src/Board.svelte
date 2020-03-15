@@ -1,9 +1,17 @@
 <script>
     import Tale from './Tale.svelte';
+    import { matrix } from './stores.js';
 
-    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+    let numbers = [];
+
+    $: {
+        for (let i = 0; i < 4; i++)
+            for (let j = 0; j < 4; j++) numbers.push($matrix[i][j]);
+    }
 </script>
 
-{#each numbers as number}
-    <Tale {number}/>
+{#each numbers as number, index}
+    {#if number}
+        <Tale {number} {index}/>
+    {/if}
 {/each}
