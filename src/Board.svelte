@@ -1,17 +1,9 @@
 <script>
     import Tale from './Tale.svelte';
-    import { matrix } from './stores.js';
 
-    let positions = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
-    $: {
-        for (let i = 0; i < 4; i++)
-            for (let j = 0; j < 4; j++) positions[$matrix[i][j]] = {m:i, n:j};
-    }
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 </script>
 
-{#each positions as position, number}
-    {#if number}
-        <Tale {number} {position}/>
-    {/if}
+{#each numbers as number}
+    <Tale {number}/>
 {/each}
