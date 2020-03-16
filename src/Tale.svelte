@@ -13,8 +13,10 @@
             position = $positions[number];
             tile.style.transform = 'translate(' + position.n*100 + '%, ' + position.m*100 + '%)';
         }
-        if (isClickable && !tile.classList.contains('clickable')) tile.classList.add('clickable');
-        else if (!isClickable && tile.classList.contains('clickable')) tile.classList.remove('clickable');
+        if (isClickable) {
+            if (!tile.classList.contains('clickable')) tile.classList.add('clickable');
+        }
+        else if (tile.classList.contains('clickable')) tile.classList.remove('clickable');
     } );
 </script>
 
