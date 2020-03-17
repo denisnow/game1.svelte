@@ -1,5 +1,6 @@
 import { writable, derived } from 'svelte/store';
 import makeMatrix from './makeMatrix.js';
+import moveTiles from './moveTiles.js';
 
 export const matrix = writable(makeMatrix());
 
@@ -15,6 +16,8 @@ export const positions = derived(
     }
 );
 
-export const clickedTail = writable(undefined);
+export const clickedTailPosition = writable(undefined);
 
-clickedTail.subscribe( val => { if (val) console.log(val); } )
+clickedTailPosition.subscribe( position => {
+    if (position) matrix.update( matrix => moveTiles(matrix, position) );
+} );
