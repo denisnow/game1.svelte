@@ -1,14 +1,14 @@
 <script>
     import { afterUpdate } from 'svelte';
-    import { positions, clickedTailPosition } from './stores.js';
+    import { positions, clickedTilePosition } from './stores.js';
 
     export let number;
 
     let position,
         tile;
 
-    const tailClickHandler = () => {
-        if (tile.classList.contains('clickable')) $clickedTailPosition = position;
+    const tileClickHandler = () => {
+        if (tile.classList.contains('clickable')) $clickedTilePosition = position;
     }
 
     $: isClickable = $positions[number].n === $positions[0].n || $positions[number].m === $positions[0].m;
@@ -25,7 +25,7 @@
     } );
 </script>
 
-<div class='tileWrapper' bind:this={tile} on:click={tailClickHandler}>
+<div class='tileWrapper' bind:this={tile} on:click={tileClickHandler}>
     <div class='tile'>
         {number}
     </div>
