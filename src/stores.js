@@ -14,8 +14,3 @@ export const positions = derived(
         return positions;
     }
 );
-
-export const voidC = derived(
-	matrix,
-	$matrix => $matrix.voidC
-);
