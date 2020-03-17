@@ -9,7 +9,7 @@
     $: isClickable = $positions[number].n === $positions[0].n || $positions[number].m === $positions[0].m;
 
     afterUpdate( () => {
-        if (!position || position !== $positions[number]) {
+        if (!position || (position.n !== $positions[number].n) && (position.m !== $positions[number].m)) {
             position = $positions[number];
             tile.style.transform = 'translate(' + position.n*100 + '%, ' + position.m*100 + '%)';
         }
