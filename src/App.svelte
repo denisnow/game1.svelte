@@ -15,3 +15,18 @@
 
     <Board/>
 </section>
+
+<section class="textArea about hidden">
+	<h2 class="visuallyHidden">Information about the game</h2>
+	<button class="closeAboutBtn" title="Return to the game board">
+		<span class="visuallyHidden">Close</span>
+	</button>
+	<div class="textWrapper">
+		<div class="textContainer">
+			<h3>Rules</h3>
+			<p>Place the tiles in ascending order.</p>
+			<h3>Hints</h3>
+			<p>Sort the first two rows, then place the «9» and the «13» tile on their destination places, finally sort remaining tiles.</p>
+		</div>
+	</div>
+</section>
