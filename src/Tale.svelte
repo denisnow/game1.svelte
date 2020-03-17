@@ -6,6 +6,10 @@
 
     let tile, position;
 
+    const tailClickHandler = () => {
+        if (tile.classList.contains('clickable')) $clickedTail = position;
+    }
+
     $: isClickable = $positions[number].n === $positions[0].n || $positions[number].m === $positions[0].m;
 
     afterUpdate( () => {
@@ -20,7 +24,7 @@
     } );
 </script>
 
-<div class='tileWrapper' bind:this={tile} on:click={ () => $clickedTail = position }>
+<div class='tileWrapper' bind:this={tile} on:click={tailClickHandler}>
     <div class='tile'>
         {number}
     </div>
