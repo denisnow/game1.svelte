@@ -6,7 +6,7 @@ export const matrix = writable(makeMatrix());
 export const positions = derived(
 	matrix,
 	$matrix => {
-        let positions = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        let positions = [];
 
         for (let i = 0; i < 4; i++)
             for (let j = 0; j < 4; j++)
