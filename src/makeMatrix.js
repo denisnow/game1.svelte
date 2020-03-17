@@ -57,7 +57,7 @@ export default function makeMatrix() {
             }
             else {
                 matrix[i][j] = 0;
-                matrix.voidC = {m: i, n: j};
+                matrix.void = {m: i, n: j};
             }
             arrIndex++;
         }
