@@ -14,3 +14,7 @@ export const positions = derived(
         return positions;
     }
 );
+
+export const clickedTail = writable(undefined);
+
+clickedTail.subscribe( val => { if (val) console.log(val); } )

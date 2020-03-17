@@ -1,11 +1,11 @@
 <script>
     import { afterUpdate } from 'svelte';
-    import { positions } from './stores.js';
+    import { positions, clickedTail } from './stores.js';
 
     export let number;
 
     let tile, position;
-    
+
     $: isClickable = $positions[number].n === $positions[0].n || $positions[number].m === $positions[0].m;
 
     afterUpdate( () => {
@@ -20,7 +20,7 @@
     } );
 </script>
 
-<div class='tileWrapper' bind:this={tile}>
+<div class='tileWrapper' bind:this={tile} on:click={ () => $clickedTail = position }>
     <div class='tile'>
         {number}
     </div>
