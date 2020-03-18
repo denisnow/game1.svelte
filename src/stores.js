@@ -48,6 +48,7 @@ isSorted.subscribe( isSorted => {
 shuffleBtnState.subscribe( ({isClicked}) => {
     if (isClicked) {
         matrix.set(makeMatrix());
+        isSorted.set(false);
         shuffleBtnState.set({isVisible: false, isClicked: false});
     }
 } );
