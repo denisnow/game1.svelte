@@ -23,19 +23,18 @@ clickedTilePosition.subscribe( position => {
 
 // ================= CHECKING IS SORTED =================
 
-export const isSorted = writable(false);
-
-positions.subscribe( positions => {
-    if (positions[0].n === 3 && positions[0].m === 3) {
+export const isSorted = derived( positions, $positions => {
+    if ($positions[0].n === 3 && $positions[0].m === 3) {
         for (let i = 15; i > 0; i--) {
-            let m = Math.floor((i - 1) / 4),   // target position coordinates
+            let m = Math.floor((i - 1) / 4),   // target position of tale
                 n = i - 1 - (m * 4);
 
-            if (positions[i].m !== m || positions[i].n !== n) return;
-            if (i === 1) isSorted.set(true);
+            if ($positions[i].m !== m || $positions[i].n !== n) return false;
+            if (i === 1) return true;
         }
     }
-} );
+    else return false;
+} ); 
 
 // ===================== SHUFFLING ======================
 
@@ -48,7 +47,6 @@ isSorted.subscribe( isSorted => {
 shuffleBtnState.subscribe( ({isClicked}) => {
     if (isClicked) {
         matrix.set(makeMatrix());
-        isSorted.set(false);
         shuffleBtnState.set({isVisible: false, isClicked: false});
     }
 } );
