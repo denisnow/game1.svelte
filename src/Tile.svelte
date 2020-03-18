@@ -1,6 +1,6 @@
 <script>
     import { afterUpdate } from 'svelte';
-    import { positions, clickedTilePosition } from './stores.js';
+    import { positions, clickedTilePosition, isSorted } from './stores.js';
 
     export let number;
 
@@ -18,10 +18,15 @@
             position = $positions[number];
             tile.style.transform = 'translate(' + position.n*100 + '%, ' + position.m*100 + '%)';
         }
-        if (isClickable) {
-            if (!tile.classList.contains('clickable')) tile.classList.add('clickable');
+        if ($isSorted) {
+            if (tile.classList.contains('clickable')) tile.classList.remove('clickable');
         }
-        else if (tile.classList.contains('clickable')) tile.classList.remove('clickable');
+        else {
+            if (isClickable) {
+                if (!tile.classList.contains('clickable')) tile.classList.add('clickable');
+            }
+            else if (tile.classList.contains('clickable')) tile.classList.remove('clickable');
+        }       
     } );
 </script>
 
