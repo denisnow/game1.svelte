@@ -1,4 +1,4 @@
-export default function moveTiles(matrix, position) {
+export default function moveTiles(matrix, position) {  // position - position of clicked tile = {m, n}
     const amountOfTiles = Math.abs(position.m-matrix.void.m || position.n-matrix.void.n);
 
     function moveTilesUp() {
