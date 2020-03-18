@@ -1,6 +1,6 @@
 <script>
+	import { isSorted, isShuffleBtnClicked } from './stores.js';
 	import Board from './Board.svelte';
-	import { shuffleBtnState } from './stores.js';
 
 	let isAboutVisible = false;
 	const toggleAboutVisibility = () => isAboutVisible = !isAboutVisible;
@@ -11,7 +11,7 @@
 {#if !isAboutVisible}
 	<section class='board'>
 		<h2 class='visuallyHidden'>The game board</h2>
-		<button class='shuffleBtn {$shuffleBtnState.isVisible ? "" : "hidden"}' title='Shuffle the tiles' on:click={ () => $shuffleBtnState.isClicked = true }>
+		<button class='shuffleBtn {$isSorted ? "" : "hidden"}' title='Shuffle the tiles' on:click={ () => $isShuffleBtnClicked = true }>
 			<span class='visuallyHidden'>Shuffle</span>
 		</button>
 		<button class='openAboutBtn' title='Display information about the game' on:click={toggleAboutVisibility}>

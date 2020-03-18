@@ -13,20 +13,12 @@ export const positions = derived( matrix, $matrix => {
     return positions;
 } );
 
-// ==================== MOVING TILES ====================
-
-export const clickedTilePosition = writable(undefined);
-
-clickedTilePosition.subscribe( position => {
-    if (position) matrix.update( matrix => moveTiles(matrix, position) );
-} );
-
 // ================= CHECKING IS SORTED =================
 
 export const isSorted = derived( positions, $positions => {
     if ($positions[0].n === 3 && $positions[0].m === 3) {
         for (let i = 15; i > 0; i--) {
-            let m = Math.floor((i - 1) / 4),   // target position of tale
+            let m = Math.floor((i - 1) / 4),   // target position of tile
                 n = i - 1 - (m * 4);
 
             if ($positions[i].m !== m || $positions[i].n !== n) return false;
@@ -34,19 +26,23 @@ export const isSorted = derived( positions, $positions => {
         }
     }
     else return false;
-} ); 
+} );
+
+// ==================== MOVING TILES ====================
+
+export const clickedTilePosition = writable(undefined);
+
+clickedTilePosition.subscribe( value => {
+    if (value) matrix.update( matrix => moveTiles(matrix, value) );
+} );
 
 // ===================== SHUFFLING ======================
 
-export const shuffleBtnState = writable({isVisible: false, isClicked: false});
+export const isShuffleBtnClicked = writable(false);
 
-isSorted.subscribe( isSorted => {
-    if (isSorted) shuffleBtnState.set({isVisible: true, isClicked: false});
-} );
-
-shuffleBtnState.subscribe( ({isClicked}) => {
-    if (isClicked) {
+isShuffleBtnClicked.subscribe( value => {
+    if (value) {
         matrix.set(makeMatrix());
-        shuffleBtnState.set({isVisible: false, isClicked: false});
+        isShuffleBtnClicked.set(false);
     }
 } );
