@@ -28,11 +28,26 @@ export const isSorted = writable(false);
 positions.subscribe( positions => {
     if (positions[0].n === 3 && positions[0].m === 3) {
         for (let i = 15; i > 0; i--) {
-            let m = Math.floor((i-1)/4),
-                n = i-1-(m*4);
+            let m = Math.floor((i - 1) / 4),   // target position coordinates
+                n = i - 1 - (m * 4);
 
             if (positions[i].m !== m || positions[i].n !== n) return;
             if (i === 1) isSorted.set(true);
         }
+    }
+} );
+
+// ===================== SHUFFLING ======================
+
+export const shuffleBtnState = writable({visible: false, clicked: false});
+
+isSorted.subscribe( isSorted => {
+    if (isSorted) shuffleBtnState.set({visible: true, clicked: false});
+} );
+
+shuffleBtnState.subscribe( ({clicked}) => {
+    if (clicked) {
+        matrix.set(makeMatrix());
+        shuffleBtnState.set({visible: false, clicked: false});
     }
 } );
