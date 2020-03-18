@@ -39,15 +39,15 @@ positions.subscribe( positions => {
 
 // ===================== SHUFFLING ======================
 
-export const shuffleBtnState = writable({visible: false, clicked: false});
+export const shuffleBtnState = writable({isVisible: false, isClicked: false});
 
 isSorted.subscribe( isSorted => {
-    if (isSorted) shuffleBtnState.set({visible: true, clicked: false});
+    if (isSorted) shuffleBtnState.set({isVisible: true, isClicked: false});
 } );
 
-shuffleBtnState.subscribe( ({clicked}) => {
-    if (clicked) {
+shuffleBtnState.subscribe( ({isClicked}) => {
+    if (isClicked) {
         matrix.set(makeMatrix());
-        shuffleBtnState.set({visible: false, clicked: false});
+        shuffleBtnState.set({isVisible: false, isClicked: false});
     }
 } );

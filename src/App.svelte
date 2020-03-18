@@ -11,7 +11,7 @@
 {#if !isAboutVisible}
 	<section class='board'>
 		<h2 class='visuallyHidden'>The game board</h2>
-		<button class='shuffleBtn {$shuffleBtnState.visible ? "" : "hidden"}' title='Shuffle the tiles' on:click={ () => $shuffleBtnState.clicked = true }>
+		<button class='shuffleBtn {$shuffleBtnState.isVisible ? "" : "hidden"}' title='Shuffle the tiles' on:click={ () => $shuffleBtnState.isClicked = true }>
 			<span class='visuallyHidden'>Shuffle</span>
 		</button>
 		<button class='openAboutBtn' title='Display information about the game' on:click={toggleAboutVisibility}>
