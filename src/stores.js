@@ -4,7 +4,7 @@ import moveTiles from './moveTiles.js';
 
 const matrix = writable(makeMatrix());
 
-// ======= MAKING ARRAY CONTAINING TAIL POSITIONS =======
+// ======= MAKING ARRAY CONTAINING TILE POSITIONS =======
 
 export const positions = derived( matrix, $matrix => {
     let positions = [];
