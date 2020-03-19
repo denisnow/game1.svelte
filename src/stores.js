@@ -4,6 +4,8 @@ import moveTiles from './moveTiles.js';
 
 const matrix = writable(makeMatrix());
 
+// ======= MAKING ARRAY CONTAINING TAIL POSITIONS =======
+
 export const positions = derived( matrix, $matrix => {
     let positions = [];
 
@@ -17,12 +19,12 @@ export const positions = derived( matrix, $matrix => {
 
 export const isSorted = derived( positions, $positions => {
     if ($positions[0].n === 3 && $positions[0].m === 3) {
-        for (let i = 15; i > 0; i--) {
+        for (let i = 15; i > 1; i--) {
             let m = Math.floor((i - 1) / 4),   // target position of tile
                 n = i - 1 - (m * 4);
 
             if ($positions[i].m !== m || $positions[i].n !== n) return false;
-            if (i === 1) return true;
+            if (i === 2) return true;
         }
     }
     else return false;
