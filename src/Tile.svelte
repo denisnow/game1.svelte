@@ -1,6 +1,6 @@
 <script>
     import { afterUpdate } from 'svelte';
-    import { positions, clickedTilePosition, isSorted } from './stores.js';
+    import { positions, clickedTilePosition, isSorted } from './model/stores.js';
 
     export let number;
 

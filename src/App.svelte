@@ -1,5 +1,5 @@
 <script>
-	import { isSorted, isShuffleBtnClicked } from './stores.js';
+	import { isSorted, isShuffleBtnClicked } from './model/stores.js';
 	import Board from './Board.svelte';
 
 	let isAboutVisible = false;

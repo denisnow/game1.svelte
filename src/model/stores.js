@@ -1,6 +1,6 @@
 import { writable, derived } from 'svelte/store';
-import makeMatrix from './makeMatrix.js';
-import moveTiles from './moveTiles.js';
+import makeMatrix from './functions/makeMatrix.js';
+import moveTiles from './functions/moveTiles.js';
 
 const matrix = writable(makeMatrix());
 
