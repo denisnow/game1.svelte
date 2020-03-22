@@ -1,6 +1,7 @@
 <script>
     import { afterUpdate } from 'svelte';
-    import { positions, clickedTilePosition, isSorted } from './model/stores.js';
+    import { positions, isSorted } from './model/stores.js';
+    import { move } from './model/actions.js';
 
     export let number;
 
@@ -8,7 +9,7 @@
         tileWrapperElement;
 
     const tileClickHandler = () => {
-        if (tileWrapperElement.classList.contains('clickable')) $clickedTilePosition = position;
+        if (tileWrapperElement.classList.contains('clickable')) move(position);
     };
 
     const doClickable = () => {

@@ -1,8 +1,7 @@
 import { writable, derived } from 'svelte/store';
 import makeMatrix from './functions/makeMatrix.js';
-import moveTiles from './functions/moveTiles.js';
 
-const matrix = writable(makeMatrix());
+export const matrix = writable(makeMatrix());
 
 // ======= MAKING ARRAY CONTAINING TILE POSITIONS =======
 
@@ -28,23 +27,4 @@ export const isSorted = derived( positions, $positions => {
         }
     }
     else return false;
-} );
-
-// ==================== MOVING TILES ====================
-
-export const clickedTilePosition = writable(undefined);
-
-clickedTilePosition.subscribe( value => {
-    if (value) matrix.update( matrix => moveTiles(matrix, value) );
-} );
-
-// ===================== SHUFFLING ======================
-
-export const isShuffleBtnClicked = writable(false);
-
-isShuffleBtnClicked.subscribe( value => {
-    if (value) {
-        matrix.set(makeMatrix());
-        isShuffleBtnClicked.set(false);
-    }
 } );
