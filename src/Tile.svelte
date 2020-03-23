@@ -15,11 +15,10 @@
 
     afterUpdate( () => {
         tileWrapperElement.style.transform = 'translate(' + $positions[number].n*100 + '%, ' + $positions[number].m*100 + '%)';
-        if ($isSorted & tileWrapperElement.classList.contains('clickable')) tileWrapperElement.classList.remove('clickable');
     } );
 </script>
 
-<div class='tileWrapper{isClickable ? " clickable" : ""}' bind:this={tileWrapperElement}>
+<div class='tileWrapper{isClickable && !$isSorted ? " clickable" : ""}' bind:this={tileWrapperElement}>
     <div class='tile' on:click={tileClickHandler}>
         {number}
     </div>
