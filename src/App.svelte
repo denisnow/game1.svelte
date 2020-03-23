@@ -12,7 +12,7 @@
 {#if !isAboutVisible}
 	<section class='board'>
 		<h2 class='visuallyHidden'>The game board</h2>
-		<button class='shuffleBtn {$isSorted ? "" : "hidden"}' title='Shuffle the tiles' on:click={shuffle}>
+		<button class='shuffleBtn{$isSorted ? "" : " hidden"}' title='Shuffle the tiles' on:click={shuffle}>
 			<span class='visuallyHidden'>Shuffle</span>
 		</button>
 		<button class='openAboutBtn' title='Display information about the game' on:click={toggleAboutVisibility}>
