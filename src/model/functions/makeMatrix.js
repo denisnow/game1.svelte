@@ -29,7 +29,7 @@ export default function makeMatrix() {
 
             arr.map(function(value, index) {
                 if (value === 0) nullIndex = index;
-                if (value > 1) for (let i = index+1; i < 16; i++)
+                else if (value > 1) for (let i = index+1; i < 16; i++)
                     if (value > arr[i] && arr[i] !== 0) inversionCount++;
             });
             if (
