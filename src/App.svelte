@@ -3,9 +3,18 @@
 	import { shuffle } from './model/actions.js';
 	import Board from './Board.svelte';
 
+	const ESCAPE_KEY = 27;
+
 	let isAboutVisible = false;
+
 	const toggleAboutVisibility = () => isAboutVisible = !isAboutVisible;
+
+	const bodyKeyDownHandler = event => {
+		if (isAboutVisible && event.which === ESCAPE_KEY) toggleAboutVisibility();
+	}
 </script>
+
+<svelte:body on:keydown={bodyKeyDownHandler}/>
 
 <h1 class='visuallyHidden'>The 15-puzzle game</h1>
 

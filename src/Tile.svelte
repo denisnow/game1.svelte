@@ -5,21 +5,33 @@
 
     export let number;
 
+    const ENTER_KEY = 13;
+    const SPACE_KEY = 32;
+
     let tileWrapperElement;
 
     const tileClickHandler = () => {
         if (tileWrapperElement.classList.contains('clickable')) move($positions[number]);
     };
 
+    const tileKeyDownHandler = event => {
+        if (event.which === ENTER_KEY || event.which === SPACE_KEY) move($positions[number]);
+    };
+
     $: isClickable = $positions[number].n === $positions[0].n || $positions[number].m === $positions[0].m;
 
     afterUpdate( () => {
-        tileWrapperElement.style.transform = 'translate(' + $positions[number].n*100 + '%, ' + $positions[number].m*100 + '%)';
+        if (isClickable) tileWrapperElement.firstChild.tabIndex = 4*$positions[number].m + $positions[number].n + 1;
+        else if (tileWrapperElement.firstChild.tabIndex > 0) tileWrapperElement.firstChild.removeAttribute('tabindex');
     } );
 </script>
 
-<div class='tileWrapper{isClickable && !$isSorted ? " clickable" : ""}' bind:this={tileWrapperElement}>
-    <div class='tile' on:click={tileClickHandler}>
+<div
+    class='tileWrapper{isClickable && !$isSorted ? " clickable" : ""}'
+    style='transform:translate({$positions[number].n*100}%, {$positions[number].m*100}%)'
+    bind:this={tileWrapperElement}
+>
+    <div class='tile' on:click={tileClickHandler} on:keydown={tileKeyDownHandler}>
         {number}
     </div>
 </div>
