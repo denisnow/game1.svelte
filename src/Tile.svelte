@@ -10,19 +10,21 @@
 
     let tileWrapperElement;
 
+    const moveTiles = () => move($positions[number]);
+
     const tileClickHandler = () => {
-        if (tileWrapperElement.classList.contains('clickable')) move($positions[number]);
+        if (tileWrapperElement.classList.contains('clickable')) moveTiles();
     };
 
     const tileKeyDownHandler = event => {
-        if (event.which === ENTER_KEY || event.which === SPACE_KEY) move($positions[number]);
+        if (event.which === ENTER_KEY || event.which === SPACE_KEY) moveTiles();
     };
 
     $: isClickable = $positions[number].n === $positions[0].n || $positions[number].m === $positions[0].m;
 
     afterUpdate( () => {
         if (isClickable) tileWrapperElement.firstChild.tabIndex = 4*$positions[number].m + $positions[number].n + 1;
-        else if (tileWrapperElement.firstChild.tabIndex > 0) tileWrapperElement.firstChild.removeAttribute('tabindex');
+        else if (tileWrapperElement.firstChild.tabIndex !== -1) tileWrapperElement.firstChild.removeAttribute('tabindex');
     } );
 </script>
 
