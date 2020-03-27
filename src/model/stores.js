@@ -1,5 +1,5 @@
 import { writable, derived } from 'svelte/store';
-import makeMatrix from './functions/makeMatrix.js';
+import makeMatrix from './helpers/makeMatrix.js';
 
 export const matrix = writable(makeMatrix());
 

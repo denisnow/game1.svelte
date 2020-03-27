@@ -1,6 +1,6 @@
 import { matrix } from './stores.js';
-import makeMatrix from './functions/makeMatrix.js';
-import moveTiles from './functions/moveTiles.js';
+import makeMatrix from './helpers/makeMatrix.js';
+import moveTiles from './helpers/moveTiles.js';
 
 export const shuffle = () => matrix.set(makeMatrix());
 
