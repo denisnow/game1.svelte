@@ -29,7 +29,8 @@
 </script>
 
 <div
-    class='tileWrapper{isClickable && !$isSorted ? " clickable" : ""}'
+    class:clickable={isClickable && !$isSorted}
+    class='tileWrapper'
     style='transform:translate({$positions[number].n*100}%, {$positions[number].m*100}%)'
     bind:this={tileWrapperElement}
 >
