@@ -23,8 +23,8 @@ export const isSorted = derived( positions, $positions => {
                 n = i - 1 - 4*m;
 
             if ($positions[i].m !== m || $positions[i].n !== n) return false;
-            if (i === 2) return true;
         }
+        return true;
     }
     else return false;
 } );
