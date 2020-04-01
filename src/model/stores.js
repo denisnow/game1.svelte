@@ -20,7 +20,7 @@ export const isSorted = derived( positions, $positions => {
     if ($positions[0].n === 3 && $positions[0].m === 3) {
         for (let i = 15; i > 1; i--) {
             let m = Math.floor((i - 1) / 4),   // target position of tile
-                n = i - 1 - (m * 4);
+                n = i - 1 - 4*m;
 
             if ($positions[i].m !== m || $positions[i].n !== n) return false;
             if (i === 2) return true;
