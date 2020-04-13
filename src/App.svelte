@@ -15,18 +15,18 @@
 
 	const clickHandler = event => {
 		// moving tile(s)
-        if (event.target.classList.contains('responsive')) {
+		if (event.target.classList.contains('responsive')) {
 			moveTiles(event.target.firstChild.textContent);
-		}
-		// opening and closing about section
-		else if (event.target.classList.contains('openAboutBtn') || event.target.classList.contains('closeAboutBtn')){
-			toggleAboutVisibility();
 		}
 		// shuffling
 		else if (event.target.classList.contains('shuffleBtn')){
 			shuffle();
 		}
-    };
+		// opening and closing about section
+		else if (event.target.classList.contains('openAboutBtn') || event.target.classList.contains('closeAboutBtn')){
+			toggleAboutVisibility();
+		}
+	};
 
 	const keyDownHandler = event => {
 		// moving tile(s)
