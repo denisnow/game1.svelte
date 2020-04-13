@@ -14,7 +14,18 @@
 	const toggleAboutVisibility = () => isAboutVisible = !isAboutVisible;
 
 	const clickHandler = event => {
-        if (event.target.classList.contains('responsive')) moveTiles(event.target.firstChild.textContent);
+		// tile clicking
+        if (event.target.classList.contains('responsive')) {
+			moveTiles(event.target.firstChild.textContent);
+		}
+		// opening and closing about section
+		else if (event.target.classList.contains('openAboutBtn') || event.target.classList.contains('closeAboutBtn')){
+			toggleAboutVisibility();
+		}
+		// shuffling
+		else if (event.target.classList.contains('shuffleBtn')){
+			shuffle();
+		}
     };
 
 	const keyDownHandler = event => {
@@ -22,20 +33,20 @@
 			moveTiles(event.target.firstChild.textContent);
 		}
 		else if (isAboutVisible && event.which === ESCAPE_KEY) toggleAboutVisibility();
-	}
+	};
 </script>
 
-<svelte:body on:keydown={keyDownHandler}/>
+<svelte:body on:click={clickHandler} on:keydown={keyDownHandler}/>
 
 <h1 class='visuallyHidden'>The 15-puzzle game</h1>
 
 {#if !isAboutVisible}
-	<section class='board' on:click={clickHandler}>
+	<section class='board'>
 		<h2 class='visuallyHidden'>The game board</h2>
-		<button class='shuffleBtn' class:hidden={!$isSorted} title='Shuffle the tiles' on:click={shuffle}>
+		<button class='shuffleBtn' class:hidden={!$isSorted} title='Shuffle the tiles'>
 			<span class='visuallyHidden'>Shuffle</span>
 		</button>
-		<button class='openAboutBtn' title='Display information about the game' on:click={toggleAboutVisibility}>
+		<button class='openAboutBtn' title='Display information about the game'>
 			<span class='visuallyHidden'>Information</span>
 		</button>
 
@@ -44,7 +55,7 @@
 {:else}
 	<section class='textArea about'>
 		<h2 class='visuallyHidden'>Information about the game</h2>
-		<button class='closeAboutBtn' title='Return to the game board' on:click={toggleAboutVisibility}>
+		<button class='closeAboutBtn' title='Return to the game board'>
 			<span class='visuallyHidden'>Close</span>
 		</button>
 		<div class='textWrapper'>
