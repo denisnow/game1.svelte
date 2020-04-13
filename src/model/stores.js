@@ -14,7 +14,7 @@ export const positions = derived( matrix, $matrix => {
     return positions;
 } );
 
-// ================= CHECKING IS SORTED =================
+// ========== CHECKING IF THE BOARD IS SORTED ===========
 
 export const isSorted = derived( positions, $positions => {
     if ($positions[0].n === 3 && $positions[0].m === 3) {

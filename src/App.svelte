@@ -1,27 +1,38 @@
 <script>
-	import { isSorted } from './model/stores.js';
-	import { shuffle } from './model/actions.js';
 	import Board from './Board.svelte';
+	import { isSorted, positions } from './model/stores.js';
+	import { shuffle, move } from './model/actions.js';
 
+	const ENTER_KEY = 13;
 	const ESCAPE_KEY = 27;
+    const SPACE_KEY = 32;
 
 	let isAboutVisible = false;
 
+	const moveTiles = number => move($positions[number]);
+
 	const toggleAboutVisibility = () => isAboutVisible = !isAboutVisible;
 
-	const bodyKeyDownHandler = event => {
-		if (isAboutVisible && event.which === ESCAPE_KEY) toggleAboutVisibility();
+	const clickHandler = event => {
+        if (event.target.classList.contains('clickable')) moveTiles(event.target.firstChild.textContent);
+    };
+
+	const keyDownHandler = event => {
+		if (event.target.classList.contains('clickable') && (event.which === ENTER_KEY || event.which === SPACE_KEY)) {
+			moveTiles(event.target.firstChild.textContent);
+		}
+		else if (isAboutVisible && event.which === ESCAPE_KEY) toggleAboutVisibility();
 	}
 </script>
 
-<svelte:body on:keydown={bodyKeyDownHandler}/>
+<svelte:body on:keydown={keyDownHandler}/>
 
 <h1 class='visuallyHidden'>The 15-puzzle game</h1>
 
 {#if !isAboutVisible}
-	<section class='board'>
+	<section class='board' on:click={clickHandler}>
 		<h2 class='visuallyHidden'>The game board</h2>
-		<button class:hidden={!$isSorted} class='shuffleBtn' title='Shuffle the tiles' on:click={shuffle}>
+		<button class='shuffleBtn' class:hidden={!$isSorted} title='Shuffle the tiles' on:click={shuffle}>
 			<span class='visuallyHidden'>Shuffle</span>
 		</button>
 		<button class='openAboutBtn' title='Display information about the game' on:click={toggleAboutVisibility}>
