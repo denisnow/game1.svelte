@@ -125,7 +125,7 @@ button:hover {
 	-webkit-transform: rotate(-45deg);
 }
 
-.textArea {
+.textSection {
 	position: absolute;
 	top: 1vw;
 	right: 1vw;
@@ -232,7 +232,7 @@ button:hover {
 		height: 1.8vh;
 	}
 
-	.textArea {
+	.textSection {
 		top: 1vh;
 		right: 1vh;
 		bottom: 1vh;
@@ -278,7 +278,7 @@ button:hover {
 		font-size: 46px;
 	}
 
-	.textArea {
+	.textSection {
 		top: 50%;
 		left: 50%;
 		width: 520px;

@@ -55,7 +55,7 @@
 		<Board/>
 	</section>
 {:else}
-	<section class='textArea about'>
+	<section class='textSection about'>
 		<h2 class='visuallyHidden'>Information about the game</h2>
 		<button class='closeAboutBtn' title='Return to the game board'>
 			<span class='visuallyHidden'>Close</span>
