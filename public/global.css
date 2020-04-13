@@ -10,7 +10,7 @@ body {
 button {
 	position: absolute;
 	border: 0;
-	opacity: 0.8;
+	opacity: 0.83;
 	cursor: pointer;
 }
 
@@ -48,7 +48,7 @@ button:hover {
 	text-align: center;
 	vertical-align: middle;
 	background-color: white;
-	opacity: 0.77;
+	opacity: 0.83;
 	user-select: none;
 
 	-khtml-user-select: none;
@@ -140,7 +140,7 @@ button:hover {
 	height: 100%;
 	padding: 0 3vh 2.5vh;
 	background-color: white;
-	opacity: 0.8;
+	opacity: 0.83;
 
 	-webkit-box-sizing: border-box;
 }
