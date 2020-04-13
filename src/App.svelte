@@ -14,11 +14,11 @@
 	const toggleAboutVisibility = () => isAboutVisible = !isAboutVisible;
 
 	const clickHandler = event => {
-        if (event.target.classList.contains('clickable')) moveTiles(event.target.firstChild.textContent);
+        if (event.target.classList.contains('responsive')) moveTiles(event.target.firstChild.textContent);
     };
 
 	const keyDownHandler = event => {
-		if (event.target.classList.contains('clickable') && (event.which === ENTER_KEY || event.which === SPACE_KEY)) {
+		if (event.target.classList.contains('responsive') && (event.which === ENTER_KEY || event.which === SPACE_KEY)) {
 			moveTiles(event.target.firstChild.textContent);
 		}
 		else if (isAboutVisible && event.which === ESCAPE_KEY) toggleAboutVisibility();

@@ -20,7 +20,7 @@
 >
     <div
         class='tile'
-        class:clickable={isMovable && !$isSorted}
+        class:responsive={isMovable && !$isSorted}
         bind:this={tileElement}
     >
         {number}
