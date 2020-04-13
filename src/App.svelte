@@ -14,7 +14,7 @@
 	const toggleAboutVisibility = () => isAboutVisible = !isAboutVisible;
 
 	const clickHandler = event => {
-		// tile clicking
+		// moving tile(s)
         if (event.target.classList.contains('responsive')) {
 			moveTiles(event.target.firstChild.textContent);
 		}
@@ -29,9 +29,11 @@
     };
 
 	const keyDownHandler = event => {
+		// moving tile(s)
 		if (event.target.classList.contains('responsive') && (event.which === ENTER_KEY || event.which === SPACE_KEY)) {
 			moveTiles(event.target.firstChild.textContent);
 		}
+		// closing about section
 		else if (isAboutVisible && event.which === ESCAPE_KEY) toggleAboutVisibility();
 	};
 </script>
