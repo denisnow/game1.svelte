@@ -19,11 +19,11 @@
 			moveTiles(event.target.firstChild.textContent);
 		}
 		// shuffling
-		else if (event.target.className === 'shuffleBtn'){
+		else if (event.target.className === 'shuffleBtn') {
 			shuffle();
 		}
 		// opening and closing 'about' section
-		else if (event.target.className === 'openAboutBtn' || event.target.className === 'closeAboutBtn'){
+		else if (event.target.className === 'openAboutBtn' || event.target.className === 'closeAboutBtn') {
 			toggleAboutVisibility();
 		}
 	};
