@@ -1,6 +1,6 @@
 <script>
 	import Board from './Board.svelte';
-	import { isSorted, positions } from './model/stores.js';
+	import { isSorted } from './model/stores.js';
 	import { shuffle, move } from './model/actions.js';
 
 	const ENTER_KEY = 13;
@@ -9,7 +9,7 @@
 
 	let isAboutVisible = false;
 
-	const moveTiles = number => move($positions[number]);
+	const moveTiles = number => move(number);
 
 	const toggleAboutVisibility = () => isAboutVisible = !isAboutVisible;
 
