@@ -5,7 +5,7 @@
 
 	const ENTER_KEY = 13;
 	const ESCAPE_KEY = 27;
-    const SPACE_KEY = 32;
+	const SPACE_KEY = 32;
 
 	let isAboutVisible = false;
 
