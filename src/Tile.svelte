@@ -1,5 +1,4 @@
 <script>
-    import { afterUpdate } from 'svelte';
     import tabIndexSetter from './tabIndexSetter.js';
 
     export let number, isMovable, tabIndex, translateX, translateY;
