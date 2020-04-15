@@ -1,9 +1,16 @@
 <script>
     import Tile from './Tile.svelte';
+    import { positions, respStates, tabIndexes, isSorted } from './model/stores.js';
 
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 </script>
 
 {#each numbers as number}
-    <Tile {number}/>
+    <Tile
+        {number}
+        isMovable={!$isSorted && $respStates[number]}
+        tabIndex={$tabIndexes[number]}
+        translateX={$positions[number].n*100}
+        translateY={$positions[number].m*100}
+    />
 {/each}

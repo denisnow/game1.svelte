@@ -3,7 +3,7 @@ import makeMatrix from './helpers/makeMatrix.js';
 
 export const matrix = writable(makeMatrix());
 
-// ======= MAKING ARRAY CONTAINING TILE POSITIONS =======
+// ========== MAKING ARRAY CONTAINING TILE POSITIONS ==========
 
 export const positions = derived( matrix, $matrix => {
     let positions = [];
@@ -14,7 +14,28 @@ export const positions = derived( matrix, $matrix => {
     return positions;
 } );
 
-// ========== CHECKING IF THE BOARD IS SORTED ===========
+// ===== MAKING ARRAY CONTAINING TILE RESPONSIVITY STATES =====
+
+export const respStates = derived( positions, $positions => {
+    let respStates = [];
+
+    for (let i = 1; i <= 15; i++) respStates[i] = $positions[i].n === $positions[0].n || $positions[i].m === $positions[0].m;
+    return respStates;
+} );
+
+// ============ MAKING ARRAY CONTAINING TABINDEXES ============
+
+export const tabIndexes = derived( [positions, respStates], ([$positions, $respStates]) => {
+    let tabIndexes = [];
+
+    for (let i = 1; i <= 15; i++) {
+        if ($respStates[i]) tabIndexes[i] = 4*$positions[i].m + $positions[i].n + 1;
+        else tabIndexes[i] = -1;
+    }
+    return tabIndexes;
+} );
+
+// ============ CHECKING IF THE BOARD IS SORTED ===============
 
 export const isSorted = derived( positions, $positions => {
     if ($positions[0].n === 3 && $positions[0].m === 3) {

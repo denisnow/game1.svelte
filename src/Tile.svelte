@@ -1,27 +1,18 @@
 <script>
     import { afterUpdate } from 'svelte';
-    import { positions, isSorted } from './model/stores.js';
+    import tabIndexSetter from './tabIndexSetter.js';
 
-    export let number;
-
-    let tileElement;
-
-    $: isMovable = $positions[number].n === $positions[0].n || $positions[number].m === $positions[0].m;
-
-    afterUpdate( () => {
-        if (isMovable) tileElement.tabIndex = 4*$positions[number].m + $positions[number].n + 1;
-        else if (tileElement.tabIndex !== -1) tileElement.removeAttribute('tabindex');
-    } );
+    export let number, isMovable, tabIndex, translateX, translateY;
 </script>
 
 <div
     class='tileWrapper'
-    style='transform:translate({$positions[number].n*100}%, {$positions[number].m*100}%)'
+    style='transform:translate({translateX}%, {translateY}%)'
 >
     <div
         class='tile'
-        class:responsive={isMovable && !$isSorted}
-        bind:this={tileElement}
+        class:responsive={isMovable}
+        use:tabIndexSetter={tabIndex}
     >
         {number}
     </div>
