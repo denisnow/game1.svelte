@@ -8,8 +8,8 @@
 {#each numbers as number}
     <Tile
         {number}
-        isMovable={!$isSorted && $respStates[number]}
-        tabIndex={!$isSorted && $tabIndexes[number] || -1}
+        isMovable={$respStates[number]}
+        tabIndex={$tabIndexes[number]}
         translateX={$positions[number].n*100}
         translateY={$positions[number].m*100}
     />

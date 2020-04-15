@@ -14,27 +14,6 @@ export const positions = derived( matrix, $matrix => {
     return positions;
 } );
 
-// ===== MAKING ARRAY CONTAINING TILE RESPONSIVITY STATES =====
-
-export const respStates = derived( positions, $positions => {
-    let respStates = [];
-
-    for (let i = 1; i <= 15; i++) respStates[i] = $positions[i].n === $positions[0].n || $positions[i].m === $positions[0].m;
-    return respStates;
-} );
-
-// ============ MAKING ARRAY CONTAINING TABINDEXES ============
-
-export const tabIndexes = derived( [positions, respStates], ([$positions, $respStates]) => {
-    let tabIndexes = [];
-
-    for (let i = 1; i <= 15; i++) {
-        if ($respStates[i]) tabIndexes[i] = 4*$positions[i].m + $positions[i].n + 1;
-        else tabIndexes[i] = -1;
-    }
-    return tabIndexes;
-} );
-
 // ============ CHECKING IF THE BOARD IS SORTED ===============
 
 export const isSorted = derived( positions, $positions => {
@@ -48,4 +27,29 @@ export const isSorted = derived( positions, $positions => {
         return true;
     }
     else return false;
+} );
+
+// ===== MAKING ARRAY CONTAINING TILE RESPONSIVITY STATES =====
+
+export const respStates = derived( [positions, isSorted], ([$positions, $isSorted]) => {
+    let respStates = [];
+
+    if (!$isSorted) for (let i = 1; i <= 15; i++) {
+        respStates[i] = $positions[i].n === $positions[0].n || $positions[i].m === $positions[0].m;
+    }
+    else for (let i = 1; i <= 15; i++) respStates[i] = false;
+    return respStates;
+} );
+
+// ============ MAKING ARRAY CONTAINING TABINDEXES ============
+
+export const tabIndexes = derived( [positions, respStates, isSorted], ([$positions, $respStates, $isSorted]) => {
+    let tabIndexes = [];
+
+    if (!$isSorted) for (let i = 1; i <= 15; i++) {
+        if ($respStates[i]) tabIndexes[i] = 4*$positions[i].m + $positions[i].n + 1;
+        else tabIndexes[i] = -1;
+    }
+    else for (let i = 1; i <= 15; i++) tabIndexes[i] = -1;
+    return tabIndexes;
 } );
