@@ -9,7 +9,7 @@
     <Tile
         {number}
         isMovable={!$isSorted && $respStates[number]}
-        tabIndex={$tabIndexes[number]}
+        tabIndex={!$isSorted && $tabIndexes[number] || -1}
         translateX={$positions[number].n*100}
         translateY={$positions[number].m*100}
     />
