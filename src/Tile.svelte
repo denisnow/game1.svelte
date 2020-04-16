@@ -1,12 +1,12 @@
 <script>
     import tabIndexSetter from './tabIndexSetter.js';
 
-    export let number, isMovable, tabIndex, translateX, translateY;
+    export let number, isMovable, tabIndex, translationX, translationY;
 </script>
 
 <div
     class='tileWrapper'
-    style='transform:translate({translateX}%, {translateY}%)'
+    style='transform:translate({translationX}%, {translationY}%)'
 >
     <div
         class='tile'

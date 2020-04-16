@@ -10,7 +10,7 @@
         {number}
         isMovable={$respStates[number]}
         tabIndex={$tabIndexes[number]}
-        translateX={$positions[number].n*100}
-        translateY={$positions[number].m*100}
+        translationX={$positions[number].n*100}
+        translationY={$positions[number].m*100}
     />
 {/each}
