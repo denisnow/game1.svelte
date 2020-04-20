@@ -16,6 +16,35 @@
 <body>
 	<main></main>
 
+	<section class="textSection browserNotification hidden">
+		<div class="textWrapper">
+			<div class="textContainer">
+				<p>Your browser is not supported. Update the browser or try a different.</p>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		var isES6supported, notificationSectionElement;
+
+		function checkIsES6supported() {
+			"use strict";
+			if (typeof Symbol == "undefined") return false;
+			try {
+				eval("class Test {}");
+				eval("() => undefined");
+			} catch (e) { return false; }
+			return true;
+		}
+
+		isES6supported = checkIsES6supported();
+		if (!isES6supported) {
+			notificationSectionElement = document.body.querySelector(".browserNotification");
+			notificationSectionElement.classList.remove("hidden");
+		}
+
+	</script>
+
 	<noscript class="textSection">
 		<div class="textWrapper">
 			<div class="textContainer">
