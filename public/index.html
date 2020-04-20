@@ -25,24 +25,24 @@
 	</section>
 
 	<script>
-		var isES6supported, notificationSectionElement;
-
-		function checkIsES6supported() {
+		// checking ES6 support
+		(function () {
 			"use strict";
-			if (typeof Symbol == "undefined") return false;
+
+			function displayBrowserNotification() {
+				var notificationSectionElement;
+
+				notificationSectionElement = document.body.querySelector(".browserNotification");
+				notificationSectionElement.className = "textSection browserNotification";
+			}
+
 			try {
 				eval("class Test {}");
 				eval("() => undefined");
-			} catch (e) { return false; }
-			return true;
-		}
-
-		isES6supported = checkIsES6supported();
-		if (!isES6supported) {
-			notificationSectionElement = document.body.querySelector(".browserNotification");
-			notificationSectionElement.classList.remove("hidden");
-		}
-
+			} catch (error) { 
+				displayBrowserNotification();
+			}
+		})();
 	</script>
 
 	<noscript class="textSection">
