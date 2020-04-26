@@ -12,14 +12,14 @@ export default function makeMatrix() {
             let randomIndex,
                 temp;
 
-            arr.map(function(value, index) {
+            arr.forEach( (value, index) => {
                 randomIndex = Math.floor(Math.random()*16);
                 if (arr[randomIndex] !== value) {
                     temp = arr[randomIndex];
                     arr[randomIndex] = value;
                     arr[index] = temp;
                 }
-            });
+            } );
         }
 
         function checkIsSolvable() {
@@ -27,11 +27,11 @@ export default function makeMatrix() {
             let inversionCount = 0,
                 nullIndex;
 
-            arr.map(function(value, index) {
+            arr.forEach( (value, index) => {
                 if (value === 0) nullIndex = index;
                 else if (value > 1) for (let i = index+1; i < 16; i++)
                     if (value > arr[i] && arr[i] !== 0) inversionCount++;
-            });
+            } );
             if (
                 (!(inversionCount%2) && ((nullIndex > 3 && nullIndex < 8) || (nullIndex > 11 && nullIndex < 16)))
                 ||
