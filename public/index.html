@@ -37,9 +37,8 @@
 			}
 
 			try {
-				eval("class Test {}");
-				eval("() => {}");
-			} catch (error) { 
+				eval("class Test {}; () => {}");
+			} catch(error) { 
 				displayBrowserNotification();
 			}
 		})();
